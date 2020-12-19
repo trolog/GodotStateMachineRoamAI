@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://objects/Background.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/level.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/rat.tscn" type="PackedScene" id=3]
+
+[node name="main" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 0.635294, 0.439216, 1 )
+position = Vector2( 80, 80 )
+scale = Vector2( 0.461773, 0.349083 )
+
+[node name="level" parent="." instance=ExtResource( 2 )]
+position = Vector2( 64, 35 )
+
+[node name="rat" parent="." instance=ExtResource( 3 )]
+position = Vector2( 60.8565, 159.352 )
+frame = 1
+offset = Vector2( 226.589, -45.1123 )
+
+[node name="rat2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 337.123, 61.2475 )
+frame = 1
+
+[node name="rat3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 392.623, 62.7191 )
+frame = 0
+
+[node name="rat4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 363.822, 55.9919 )
+frame = 0
+
+[node name="rat5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 236.846, 52.2079 )
+frame = 0
+
+[node name="rat6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 194.591, 55.3613 )

@@ -1,0 +1,61 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://sprites/Rat_idle_clean5.png" type="Texture" id=1]
+[ext_resource path="res://sprites/Rat_Run2.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Rat_Run1.png" type="Texture" id=3]
+[ext_resource path="res://sprites/Rat_idle_clean2.png" type="Texture" id=4]
+[ext_resource path="res://sprites/Rat_Run4.png" type="Texture" id=5]
+[ext_resource path="res://sprites/Rat_Run5.png" type="Texture" id=6]
+[ext_resource path="res://sprites/Rat_idle_clean1.png" type="Texture" id=7]
+[ext_resource path="res://sprites/Rat_idle_clean4.png" type="Texture" id=8]
+[ext_resource path="res://sprites/Rat_idle_clean6.png" type="Texture" id=9]
+[ext_resource path="res://sprites/Rat_idle_clean8.png" type="Texture" id=10]
+[ext_resource path="res://sprites/Rat_idle_stand4.png" type="Texture" id=11]
+[ext_resource path="res://sprites/Rat_idle_clean7.png" type="Texture" id=12]
+[ext_resource path="res://sprites/Rat_idle_clean3.png" type="Texture" id=13]
+[ext_resource path="res://sprites/Rat_Run3.png" type="Texture" id=14]
+[ext_resource path="res://sprites/Rat_idle_clean9.png" type="Texture" id=15]
+[ext_resource path="res://sprites/Rat_idle_stand1.png" type="Texture" id=16]
+[ext_resource path="res://sprites/Rat_idle_stand2.png" type="Texture" id=17]
+[ext_resource path="res://sprites/Rat_idle_stand3.png" type="Texture" id=18]
+[ext_resource path="res://scripts/rat.gd" type="Script" id=19]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 4 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 1 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 15 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 1 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "idleclean",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 14 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "run",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "idlestand",
+"speed": 10.0
+} ]
+
+[node name="rat" type="AnimatedSprite"]
+frames = SubResource( 1 )
+animation = "run"
+frame = 1
+playing = true
+offset = Vector2( 0, -5 )
+script = ExtResource( 19 )
+
+[node name="ground_ray" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 4 )
+
+[node name="wall_ray" type="RayCast2D" parent="."]
+position = Vector2( 8, -6 )
+enabled = true
+cast_to = Vector2( 3, 0 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+[connection signal="animation_finished" from="." to="." method="_on_rat_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
